@@ -152,44 +152,72 @@ export const Projects = () => {
                           </div>
                         )}
 
-                        {/* Premium CTA Buttons */}
-                        <div className="flex gap-4 flex-wrap items-center justify-start">
-                          {project.github && (
-                            <motion.div
-                              whileHover={{ scale: 1.05 }}
-                              whileTap={{ scale: 0.95 }}
-                            >
-                              <Button 
-                                href={project.github}
-                                variant="outline"
-                                size="md"
-                                icon={Github}
-                                className="group/btn"
-                              >
-                                <span>View Repository</span>
-                                <motion.div
-                                  animate={{ x: [0, 4, 0] }}
-                                  transition={{ duration: 2, repeat: Infinity }}
-                                >
-                                  <ChevronRight size={18} />
-                                </motion.div>
-                              </Button>
-                            </motion.div>
-                          )}
+                        {/* Premium AI Startup CTA Buttons */}
+                        <div className="flex flex-wrap gap-4 items-center justify-start mt-8">
+                          {/* Live Demo Button - Primary CTA */}
                           {project.liveDemo && (
-                            <motion.div
-                              whileHover={{ scale: 1.05 }}
+                            <motion.a 
+                              href={project.liveDemo}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold text-white relative overflow-hidden group/demo cursor-pointer"
+                              style={{
+                                background: "linear-gradient(135deg, #00d9ff 0%, #0099ff 100%)",
+                              }}
+                              whileHover={{ 
+                                scale: 1.05,
+                                boxShadow: "0 0 30px rgba(0, 217, 255, 0.7)"
+                              }}
                               whileTap={{ scale: 0.95 }}
                             >
-                              <Button 
-                                href={project.liveDemo}
-                                variant="primary"
-                                size="md"
-                                icon={ExternalLink}
-                              >
-                                Live Demo
-                              </Button>
-                            </motion.div>
+                              {/* Animated background gradient overlay */}
+                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover/demo:opacity-100 transition-opacity duration-500 -skew-x-12"></div>
+                              
+                              {/* Glowing border effect */}
+                              <div className="absolute inset-0 rounded-full border border-white/30 group-hover/demo:border-white/60 transition-colors duration-300"></div>
+                              
+                              {/* Content */}
+                              <span className="relative z-10 flex items-center gap-2">
+                                <ExternalLink size={19} className="group-hover/demo:rotate-6 transition-transform duration-300" />
+                                <span className="font-semibold tracking-wide">Live Demo</span>
+                              </span>
+                            </motion.a>
+                          )}
+
+                          {/* GitHub Repository Button - Secondary CTA */}
+                          {project.github && (
+                            <motion.a 
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold relative overflow-hidden group/github cursor-pointer"
+                              style={{
+                                background: "rgba(255, 255, 255, 0.08)",
+                                backdropFilter: "blur(10px)",
+                                border: "1.5px solid rgba(255, 255, 255, 0.2)"
+                              }}
+                              whileHover={{ 
+                                scale: 1.05,
+                                backgroundColor: "rgba(255, 255, 255, 0.12)",
+                                borderColor: "rgba(255, 0, 68, 0.6)",
+                                boxShadow: "0 0 25px rgba(255, 0, 68, 0.4)"
+                              }}
+                              whileTap={{ scale: 0.95 }}
+                            >
+                              {/* Premium shine effect on hover */}
+                              <div className="absolute inset-0 rounded-full opacity-0 group-hover/github:opacity-100 transition-opacity duration-500">
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12"></div>
+                              </div>
+                              
+                              {/* Animated glow border */}
+                              <div className="absolute inset-0 rounded-full border border-text-primary/30 group-hover/github:border-accent-red/50 transition-colors duration-300"></div>
+                              
+                              {/* Content */}
+                              <span className="relative z-10 flex items-center gap-2 text-text-primary group-hover/github:text-white transition-colors duration-300">
+                                <Github size={19} className="group-hover/github:rotate-6 transition-transform duration-300" />
+                                <span className="font-semibold tracking-wide">GitHub Repository</span>
+                              </span>
+                            </motion.a>
                           )}
                         </div>
                       </div>
